@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Calendar;
 /**
  * Write a description of class MessagePost here.
  * 
@@ -21,7 +22,9 @@ public class MessagePost
         username = author;
         message = text;
         comments = new ArrayList<String>();
-        timeStamp = System.currentTimeMillis();
+        Calendar partida = Calendar.getInstance();
+        partida.set(1970, 1, 1, 0, 0, 0);
+        timeStamp = System.currentTimeMillis() - partida.getTime().getTime();
         likes = 0;
     }
     
@@ -37,5 +40,30 @@ public class MessagePost
         if(likes > 0){
             likes--;
         }
+    }
+    
+    public String getText(){
+        return message;
+    }
+    
+    public long getTimeStamp(){
+        return timeStamp;
+    }
+    
+    public void display(){
+        System.out.println(username + " ha publicado:");
+        System.out.println(message);
+        System.out.println("Hace " + timeString(timeStamp));
+        System.out.println("Le gusta a " + likes + " personas");
+    }
+    
+    private String timeString(long time){
+        Calendar partida = Calendar.getInstance();
+        partida.set(1970, 1, 1, 0, 0, 0);
+        long current = (System.currentTimeMillis() / 1000) - (partida.getTime().getTime() / 1000);
+        long resultado = current - (time / 1000);
+        long minutos = resultado / 60;
+        resultado = resultado % 60;
+        return minutos + " minuto(s) y " + resultado + " segundos";
     }
 }
