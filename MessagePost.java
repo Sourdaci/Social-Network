@@ -17,8 +17,25 @@ public class MessagePost
     /**
      * Constructor for objects of class MessagePost
      */
-    public MessagePost()
-    {
+    public MessagePost(String author, String text){
+        username = author;
+        message = text;
         comments = new ArrayList<String>();
+        timeStamp = System.currentTimeMillis();
+        likes = 0;
+    }
+    
+    public void addComment(String text){
+        comments.add(text);
+    }
+    
+    public void like(){
+        likes++;
+    }
+    
+    public void unlike(){
+        if(likes > 0){
+            likes--;
+        }
     }
 }
