@@ -48,13 +48,17 @@ public class PhotoPost
         return caption;
     }
     
+    public String getImageFile(){
+        return filename;
+    }
+    
     public long getTimeStamp(){
         return timeStamp;
     }
     
     public void display(){
         System.out.println(username + " ha publicado:");
-        System.out.println("\t" + filename);
+        System.out.println("\t[" + filename + "]");
         System.out.println(caption);
         System.out.println("Hace " + timeString(timeStamp));
         System.out.println("Le gusta a " + likes + " personas");
