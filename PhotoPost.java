@@ -61,7 +61,15 @@ public class PhotoPost
         System.out.println("\t[" + filename + "]");
         System.out.println(caption);
         System.out.println("Hace " + timeString(timeStamp));
-        System.out.println("Le gusta a " + likes + " personas");
+        System.out.println("Le gusta a " + likes + " persona(s)");
+        if(comments.size() > 0){
+            System.out.println("Comentarios:");
+            for (String texto : comments){
+                System.out.println(texto);
+            }
+        }else{
+            System.out.println("No hay comentarios en el post");
+        }
     }
     
     private String timeString(long time){
